@@ -70,10 +70,25 @@ public class PlayerApp {
 		for (int counter = 0; counter < story.size();counter++){
 			String line = story.get(counter);
 			
-			if (line.equals("checkpoint")){
+			if (line.matches("![A-Z]{1,2}[a-z]!")){//skips to next end
+				for (; counter<story.size() && !story.get(counter).equals("!end!");counter++){
+				}
+			}
+			else if(line.matches("![A-Z]{1,2}[a-z]{3," + (Integer.parseInt(numButton)+1) +"}!")){
+				String identifier = line.replace("!","");
+				String question = identifier.replaceAll("[A-Z]", "");
+				String label = identifier.replaceAll("[a-z]", "");
+				label = "!" + label + this.scenario(question) + "!";
+				for (; counter<story.size() && !story.get(counter).equals(label);counter++){
+				}
+			}
+			else if (line.equals("!end!")){
+			}
+			
+			else if (line.equals("!checkpoint!")){
 				checkpoint = counter;
 			}
-			else if (line.equals("repeat")){
+			else if (line.equals("!repeat!")){
 				if(repeat()){
 					counter = checkpoint;
 				}
@@ -96,6 +111,7 @@ public class PlayerApp {
 			}
 		}
 	}
+
 
 
 	private boolean repeat() {
@@ -165,9 +181,10 @@ public class PlayerApp {
 		return false;
 	}
 	
-	
-	
-	
-	
+	private String scenario(String question) {
+		int buttonPressed;
+		sim.getCell(0).displayCharacter(question.charAt(question.length()-1));
+		buttonPressed = this.getUserInput(question.length()-1);
+		return String.valueOf(question.charAt(buttonPressed));
+	}
 }
-
