@@ -105,7 +105,7 @@ public class PlayerApp {
 			else if(line.matches("sfx [A-Za-z]+.wav")){
 				String [] audioClip = line.split(" ");
 				System.out.println(audioClip[1]); //Play Audio here instead
-				//audio.play(audioClip[1]);
+				audio.play(audioClip[1]);
 			}
 			
 			else{
@@ -174,7 +174,9 @@ public class PlayerApp {
 		System.out.print(c);
 		}*/
 		for (int counter = 0; counter<option.size();counter++){
-			System.out.println("Press Button " + counter + " if the letter display is " + option.get(counter)); //Text to speech
+			//System.out.println("Press Button " + counter + " if the letter display is " + option.get(counter)); //Text to speech
+		String play = "Press Button" + counter+"if the letter display is" +option.get(counter);
+		audio.read(play);
 		}
 		sim.getCell(0).displayCharacter(correct);
 		buttonPressed = this.getUserInput(difficulty);
