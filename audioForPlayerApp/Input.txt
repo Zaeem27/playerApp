@@ -1,0 +1,23 @@
+<!checkpoint!<narrator 1 text here
+ay ay ay ay ay ay ay ay <sfx dwdw.wav<
+Press 0 to continue, press 1 to repeat <!repeat!<
+
+
+press button 1, press button 2, button 3<!Aabcb!< 
+
+<!Aa!< this should be skippe1 <!end!< <!end!<
+
+
+<!checkpoint!<narrator two speaks
+cscscsscscsscscsc
+random scenario with 5 buttons <random5<
+
+
+<!Ab!< this should be skipped2 <!end!<
+
+<!checkpoint!< narrator 3
+or 3
+cscscsscscsscscscor 3
+cscscsscscsscscsc
+
+<!Ac!< this should be skipped3 <!end!<
