@@ -12,6 +12,7 @@ import java.util.concurrent.Semaphore;
 
 import javax.swing.JOptionPane;
 
+import audioForPlayerApp.audio;
 import simulator.Simulator;
 
 public class PlayerApp {
@@ -104,10 +105,12 @@ public class PlayerApp {
 			else if(line.matches("sfx [A-Za-z]+.wav")){
 				String [] audioClip = line.split(" ");
 				System.out.println(audioClip[1]); //Play Audio here instead
+				//audio.play(audioClip[1]);
 			}
 			
 			else{
 				System.out.println(line); //Text to speech
+				audio.read(line);
 			}
 		}
 	}
