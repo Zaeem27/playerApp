@@ -80,7 +80,7 @@ public class PlayerApp {
 				String question = identifier.replaceAll("[A-Z]", "");
 				String label = identifier.replaceAll("[a-z]", "");
 				label = "!" + label + this.scenario(question) + "!";
-				for (; counter<story.size() && !story.get(counter).equals(label);counter++){
+				for (counter = 0; counter<story.size() && !story.get(counter).equals(label);counter++){
 				}
 			}
 			else if (line.equals("!end!")){
@@ -175,7 +175,7 @@ public class PlayerApp {
 		}*/
 		for (int counter = 0; counter<option.size();counter++){
 			//System.out.println("Press Button " + counter + " if the letter display is " + option.get(counter)); //Text to speech
-		String play = "Press Button" + counter+"if the letter display is" +option.get(counter);
+		String play = "Press Button " + counter + "if the letter display is " + option.get(counter);
 		audio.read(play);
 		}
 		sim.getCell(0).displayCharacter(correct);
