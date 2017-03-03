@@ -81,7 +81,7 @@ public class PlayerApp {
 	}
 	
 	public void playScenario(){
-		if (numCell == 0 || numButton == 0){
+		if (sim==null){
 			
 		}
 		else{
