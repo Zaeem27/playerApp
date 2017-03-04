@@ -26,11 +26,14 @@ public final class audio {
 		//String toRead = s.nextLine();
 		
 		
+		
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
 		Voice voice = vm.getVoice(VOICE_NAME);
+		voice.setStyle("casual");
 		voice.allocate();
 		voice.speak(toRead);
+		voice.deallocate();
 	}
 	
 	
