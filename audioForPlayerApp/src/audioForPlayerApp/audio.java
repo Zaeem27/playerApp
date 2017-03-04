@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 
 import com.sun.speech.*;
 import com.sun.speech.freetts.Voice;
@@ -33,8 +34,7 @@ public final class audio {
 	}
 	
 	
-	public static void play(String toPlay) {
-		try{
+	public static void play(String toPlay) throws Exception {
             AudioInputStream ais = AudioSystem.getAudioInputStream(new File(toPlay));
             Clip test = AudioSystem.getClip();  
 
@@ -47,10 +47,7 @@ public final class audio {
                 Thread.sleep(10);
 
             test.close();
-        }catch(Exception ex){
-            ex.printStackTrace();
         }
-	}
 	
 	
 	

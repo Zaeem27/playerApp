@@ -73,6 +73,7 @@ public class PlayerApp {
 		}
 	}
 	
+	//Singleton for PlayerApp.
 	public static PlayerApp getPlayerApp(String fileName){
 		if (instance == null){
 			instance = new PlayerApp(fileName);
@@ -80,6 +81,7 @@ public class PlayerApp {
 		return instance;
 	}
 	
+	//Plays the text file.
 	public void playScenario(){
 		if (sim==null){
 			
@@ -136,10 +138,16 @@ public class PlayerApp {
 						}
 						sim.clearAllCells();
 					}
-					else if(line.matches("sfx [A-Za-z]+.wav")){
+					else if(line.matches("sfx [A-Za-z0-9]+.wav")){
 						String [] audioClip = line.split(" ");
-						System.out.println(audioClip[1]); //Play Audio here instead
-						audio.play(audioClip[1]);
+						try {
+							System.out.println(audioClip[1]); //Play Audio here instead
+							audio.play(audioClip[1]);
+						} catch(Exception ex){
+				        	audio.read("Error. Please get an adult. Sound file not found.");
+				            ex.printStackTrace();
+				            return;
+				        }
 					}
 					
 					else{
@@ -156,7 +164,7 @@ public class PlayerApp {
 	}
 
 
-
+	//Gets user input for "repeat" keyword and returns a truth value based on user input.
 	private boolean repeat() {
 		int buttonPress = getUserInput(2);
 		if(buttonPress==1){
@@ -165,6 +173,8 @@ public class PlayerApp {
 		return false;
 	}
 	
+	//Creates action listener for all the buttons for one input only, removing them
+	//and input is received.
 	private int getUserInput(int numButton){
 		Semaphore semaphore = new Semaphore(0);
 	
@@ -195,6 +205,7 @@ public class PlayerApp {
 		return buttonPressed;
 	}
 	
+	//Generates a random scenario for "randomX" keyword.
 	private boolean randomScenario(int difficulty) {
 		int buttonPressed;
 		StringBuilder alphabet = new StringBuilder ("abcdefghijklmnopqrstuvwxyz");
@@ -226,6 +237,7 @@ public class PlayerApp {
 		return false;
 	}
 	
+	//Plays a user generated scenario specified in file.
 	private String scenario(String question, String output) {
 		int buttonPressed;
 		
