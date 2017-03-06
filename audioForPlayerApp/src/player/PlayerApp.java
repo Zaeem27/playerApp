@@ -51,11 +51,11 @@ public class PlayerApp {
 			}
 		
 			if (numButton <= 1||numButton > 30){
-				throw new IllegalArgumentException("Button number is not greater than one or is greater than thirty.");
+				throw new IllegalArgumentException("Button number is less than two or is greater than thirty.");
 			}
 			
 			if (numCell <= 0||numCell > 30){
-				throw new IllegalArgumentException("Cell number is not greater than zero or is greater than thirty.");
+				throw new IllegalArgumentException("Cell number is less than one or is greater than thirty.");
 			}
 			sim = new Simulator(numCell, numButton);
 		}catch(IllegalArgumentException e){
