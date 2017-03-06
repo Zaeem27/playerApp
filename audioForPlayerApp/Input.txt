@@ -1,3 +1,4 @@
+<!12!4!<
 <!checkpoint!<narrator 1 text here
 ay ay ay ay ay ay ay ay <sfx dwdw.wav<
 Press 0 to continue, press 1 to repeat <!repeat!<

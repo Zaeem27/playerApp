@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
 
 import javax.swing.JOptionPane;
 
-import audioForPlayerApp.audio;
+import audioForPlayerApp.Audio;
 import simulator.Simulator;
 
 public class PlayerApp {
@@ -60,10 +60,10 @@ public class PlayerApp {
 			}
 			sim = new Simulator(numCell, numButton);
 		}catch(IllegalArgumentException e){
-			audio.read("Error. Please get an adult. " + e.getMessage());
+			Audio.read("Error. Please get an adult. " + e.getMessage());
 			e.printStackTrace();
 		}catch (FileNotFoundException e) {
-		audio.read("Error. Please get an adult. File not found.");
+		Audio.read("Error. Please get an adult. File not found.");
 		e.printStackTrace();
 		return;
 		}
@@ -139,19 +139,19 @@ public class PlayerApp {
 						String [] audioClip = line.split(" ");
 						try {
 							System.out.println(audioClip[1]); 
-							audio.play(audioClip[1]);
+							Audio.play(audioClip[1]);
 						} catch(Exception ex){
-				        	audio.read("Error. Please get an adult. Sound file not found.");
+				        	Audio.read("Error. Please get an adult. Sound file not found.");
 				            ex.printStackTrace();
 				            return;
 				        }
 					}
 					
 					else{
-						audio.read(line);
+						Audio.read(line);
 					}
 				}catch(IllegalArgumentException e){
-					audio.read("Error. Please get an adult. " + e.getMessage());
+					Audio.read("Error. Please get an adult. " + e.getMessage());
 					e.printStackTrace();
 					return;
 				}
@@ -162,7 +162,7 @@ public class PlayerApp {
 
 	//Gets user input for "repeat" keyword and returns a truth value based on user input.
 	private boolean repeat() {
-		audio.read("Press Button 0 to continue, press Button 1 to repeat");
+		Audio.read("Press Button 0 to continue, press Button 1 to repeat");
 		int buttonPress = getUserInput(2);
 		if(buttonPress==1){
 			return true;
@@ -222,7 +222,7 @@ public class PlayerApp {
 		sim.getCell(0).displayCharacter(correct);
 		for (int counter = 0; counter<option.size();counter++){
 		String play = "Press Button " + counter + " if the letter displayed in the first cell is " + option.get(counter);
-		audio.read(play);
+		Audio.read(play);
 		}
 		buttonPressed = this.getUserInput(difficulty);
 		if (option.get(buttonPressed) == correct){

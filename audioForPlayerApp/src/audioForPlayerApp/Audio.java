@@ -13,14 +13,14 @@ import com.sun.speech.*;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
-public final class audio {
+public final class Audio {
 
-	private audio() {
+	private Audio() {
 		
 		
 	}
 	
-	
+	// 
 	public static void read(String toRead) {
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
