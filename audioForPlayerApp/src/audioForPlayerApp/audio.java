@@ -26,7 +26,7 @@ public final class audio {
 		//String toRead = s.nextLine();
 		
 		
-		
+		System.out.println(toRead);
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
 		Voice voice = vm.getVoice(VOICE_NAME);

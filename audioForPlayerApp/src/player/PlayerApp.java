@@ -109,6 +109,7 @@ public class PlayerApp {
 						label = "!" + label + this.scenario(parts[2], parts[3]) + "!";
 						for (counter = 0; counter<story.size() && !story.get(counter).equals(label);counter++){
 						}
+						sim.clearAllCells();
 					}
 					else if (line.equals("!end!")|| line.matches("![0-9]+![0-9]+!")){
 					}
@@ -151,7 +152,7 @@ public class PlayerApp {
 					}
 					
 					else{
-						System.out.println(line); //Text to speech
+						//System.out.println(line); Text to speech
 						audio.read(line);
 					}
 				}catch(IllegalArgumentException e){
@@ -166,6 +167,7 @@ public class PlayerApp {
 
 	//Gets user input for "repeat" keyword and returns a truth value based on user input.
 	private boolean repeat() {
+		audio.read("Press Button 0 to continue, press Button 1 to repeat");
 		int buttonPress = getUserInput(2);
 		if(buttonPress==1){
 			return true;
@@ -224,10 +226,11 @@ public class PlayerApp {
 		/*for (char c: option){
 		System.out.print(c);
 		}*/
+		sim.clearAllCells();
 		sim.getCell(0).displayCharacter(correct);
 		for (int counter = 0; counter<option.size();counter++){
 			//System.out.println("Press Button " + counter + " if the letter display is " + option.get(counter)); //Text to speech
-		String play = "Press Button " + counter + "if the letter displayed in the first cell is " + option.get(counter);
+		String play = "Press Button " + counter + " if the letter displayed in the first cell is " + option.get(counter);
 		audio.read(play);
 		}
 		buttonPressed = this.getUserInput(difficulty);
@@ -240,7 +243,7 @@ public class PlayerApp {
 	//Plays a user generated scenario specified in file.
 	private String scenario(String question, String output) {
 		int buttonPressed;
-		
+		sim.clearAllCells();
 		for (int i = 0; i<output.length();i++){
 			sim.getCell(i).displayCharacter(output.charAt(i));
 		}
