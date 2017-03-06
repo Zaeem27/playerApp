@@ -59,10 +59,6 @@ public class PlayerApp {
 				throw new IllegalArgumentException("Cell number is not greater than zero or is greater than thirty.");
 			}
 			sim = new Simulator(numCell, numButton);
-			/* System.out.println(line);
-			 for (String part : story) {
-				 System.out.println(part);
-			 }*/
 		}catch(IllegalArgumentException e){
 			audio.read("Error. Please get an adult. " + e.getMessage());
 			e.printStackTrace();
@@ -142,7 +138,7 @@ public class PlayerApp {
 					else if(line.matches("sfx [A-Za-z0-9]+.wav")){
 						String [] audioClip = line.split(" ");
 						try {
-							System.out.println(audioClip[1]); //Play Audio here instead
+							System.out.println(audioClip[1]); 
 							audio.play(audioClip[1]);
 						} catch(Exception ex){
 				        	audio.read("Error. Please get an adult. Sound file not found.");
@@ -152,7 +148,6 @@ public class PlayerApp {
 					}
 					
 					else{
-						//System.out.println(line); Text to speech
 						audio.read(line);
 					}
 				}catch(IllegalArgumentException e){
@@ -223,13 +218,9 @@ public class PlayerApp {
 			alphabet.deleteCharAt(index);
 		}	
 		Collections.shuffle(option);
-		/*for (char c: option){
-		System.out.print(c);
-		}*/
 		sim.clearAllCells();
 		sim.getCell(0).displayCharacter(correct);
 		for (int counter = 0; counter<option.size();counter++){
-			//System.out.println("Press Button " + counter + " if the letter display is " + option.get(counter)); //Text to speech
 		String play = "Press Button " + counter + " if the letter displayed in the first cell is " + option.get(counter);
 		audio.read(play);
 		}
@@ -247,9 +238,6 @@ public class PlayerApp {
 		for (int i = 0; i<output.length();i++){
 			sim.getCell(i).displayCharacter(output.charAt(i));
 		}
-		//sim.getCell(0).displayCharacter(question.charAt(question.length()-1));
-		
-		
 		buttonPressed = this.getUserInput(question.length());
 		return String.valueOf(question.charAt(buttonPressed));
 	}

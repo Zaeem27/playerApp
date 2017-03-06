@@ -22,11 +22,6 @@ public final class audio {
 	
 	
 	public static void read(String toRead) {
-		//Scanner s = new Scanner(System.in);
-		//String toRead = s.nextLine();
-		
-		
-		System.out.println(toRead);
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
 		Voice voice = vm.getVoice(VOICE_NAME);
@@ -34,6 +29,7 @@ public final class audio {
 		voice.allocate();
 		voice.speak(toRead);
 		voice.deallocate();
+		System.out.println(toRead.trim());
 	}
 	
 	
@@ -50,6 +46,7 @@ public final class audio {
                 Thread.sleep(10);
 
             test.close();
+            System.out.println(toPlay);
         }
 	
 	
