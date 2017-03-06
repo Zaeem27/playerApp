@@ -18,7 +18,6 @@ import simulator.Simulator;
 public class PlayerApp {
 	
 	
-	private static PlayerApp instance = null;
 	private ArrayList <String> story = new ArrayList <String> ();
 	private Simulator sim;
 	private int numButton;
@@ -26,8 +25,8 @@ public class PlayerApp {
 	private int buttonActivate;
 	private int buttonPressed;
 	
-	
-	private PlayerApp(String fileName){
+	//Creates a Player App with specified file name.
+	public PlayerApp(String fileName){
 		File file = new File (fileName);
 		StringBuilder sb = new StringBuilder();
 		Scanner input;
@@ -69,15 +68,9 @@ public class PlayerApp {
 		}
 	}
 	
-	//Singleton for PlayerApp.
-	public static PlayerApp getPlayerApp(String fileName){
-		if (instance == null){
-			instance = new PlayerApp(fileName);
-		}
-		return instance;
-	}
 	
-	//Plays the text file.
+	//Plays the text file in Player App based on a certain file format. 
+	//Rather than using Javadoc, please read the file format documentation instead.
 	public void playScenario(){
 		if (sim==null){
 			
@@ -93,19 +86,7 @@ public class PlayerApp {
 						}
 					}
 					else if(line.matches("![A-Z]{1,2}![a-z]+![a-z[ ]]+!")){
-						String parts[] = line.split("!");
-						String label = parts[1];
-						if (parts[2].length()>numButton){
-							throw new IllegalArgumentException("In "+label+" keyword, there are not enough buttons.");
-						}
-						if (parts[3].length()>numCell){
-							throw new IllegalArgumentException("In "+label+" keyword, there are not enough cells.");
-						}
-						
-						label = "!" + label + this.scenario(parts[2], parts[3]) + "!";
-						for (counter = 0; counter<story.size() && !story.get(counter).equals(label);counter++){
-						}
-						sim.clearAllCells();
+						counter = playCustomScenario(line);
 					}
 					else if (line.equals("!end!")|| line.matches("![0-9]+![0-9]+!")){
 					}
@@ -119,17 +100,7 @@ public class PlayerApp {
 						}
 					}
 					else if(line.matches("random[0-9]+")){
-						int difficulty = Integer.parseInt(line.substring(6, line.length()));
-						if (difficulty > 26){
-								throw new IllegalArgumentException("Random keyword has too high difficulty.");
-						}
-						
-						if (difficulty <= 1 || difficulty > numButton){
-							throw new IllegalArgumentException("Random keyword has too low difficulty or "
-									+ "difficulty exceeds number of buttons availible.");
-						}
-						
-						boolean pass = randomScenario(difficulty);
+						boolean pass = randomScenario(line);
 						if (!pass){
 							counter--;
 						}
@@ -169,8 +140,10 @@ public class PlayerApp {
 		return false;
 	}
 	
-	//Creates action listener for all the buttons for one input only, removing them
-	//and input is received.
+	//Creates action listeners for specified buttons.
+	//Listeners are removed after one user input on any activated buttons.
+	//Returns the button number the user clicked on (assuming button clicked on is
+	//activated.
 	private int getUserInput(int numButton){
 		Semaphore semaphore = new Semaphore(0);
 	
@@ -191,6 +164,7 @@ public class PlayerApp {
 		try {
 			semaphore.acquire();
 		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		for(int buttonActivate = 0; buttonActivate < numButton; buttonActivate++){
 			for(ActionListener act : sim.getButton(buttonActivate).getActionListeners()) {
@@ -202,7 +176,16 @@ public class PlayerApp {
 	}
 	
 	//Generates a random scenario for "randomX" keyword.
-	private boolean randomScenario(int difficulty) {
+	private boolean randomScenario(String line) {
+		int difficulty = Integer.parseInt(line.substring(6, line.length()));
+		if (difficulty > 26){
+				throw new IllegalArgumentException("Random keyword has too high difficulty.");
+		}
+		
+		if (difficulty <= 1 || difficulty > numButton){
+			throw new IllegalArgumentException("Random keyword has too low difficulty or "
+					+ "difficulty exceeds number of buttons availible.");
+		}
 		int buttonPressed;
 		StringBuilder alphabet = new StringBuilder ("abcdefghijklmnopqrstuvwxyz");
 		ArrayList <Character> option = new ArrayList <Character>();
@@ -231,7 +214,26 @@ public class PlayerApp {
 	}
 	
 	//Plays a user generated scenario specified in file.
-	private String scenario(String question, String output) {
+	private int playCustomScenario(String line){
+		int counter;
+		String parts[] = line.split("!");
+		String label = parts[1];
+		if (parts[2].length()>numButton){
+			throw new IllegalArgumentException("In <"+line+"< keyword, there are not enough buttons.");
+		}
+		if (parts[3].length()>numCell){
+			throw new IllegalArgumentException("In <"+line+"< keyword, there are not enough cells.");
+		}
+		
+		label = "!" + label + this.outputCustomScenario(parts[2], parts[3]) + "!";
+		for (counter = 0; counter<story.size() && !story.get(counter).equals(label);counter++){
+		}
+		sim.clearAllCells();
+		return counter;
+	}
+	
+	//Outputs user generated scenario onto Simulator and gets user input.
+	private String outputCustomScenario(String question, String output) {
 		int buttonPressed;
 		sim.clearAllCells();
 		for (int i = 0; i<output.length();i++){

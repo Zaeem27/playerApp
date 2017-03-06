@@ -20,7 +20,7 @@ public final class Audio {
 		
 	}
 	
-	// Reads the string read from the file and provided as an argument using freetts
+	// Reads the string toRead using freetts
 	public static void read(String toRead) {
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
@@ -33,7 +33,7 @@ public final class Audio {
 		System.out.println(toRead.trim());
 	}
 	
-	//Plays the audio file given in .wav format provided as a method argument 
+	//Plays the audio file (.wav) specified by string in argument.
 	public static void play(String toPlay) throws Exception {
             AudioInputStream ais = AudioSystem.getAudioInputStream(new File(toPlay));
             Clip test = AudioSystem.getClip();  
