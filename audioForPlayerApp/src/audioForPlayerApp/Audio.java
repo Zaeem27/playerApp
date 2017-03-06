@@ -33,7 +33,7 @@ public final class Audio {
 		System.out.println(toRead.trim());
 	}
 	
-	//Plays the audio file given in wav format provided as a method argument 
+	//Plays the audio file given in .wav format provided as a method argument 
 	public static void play(String toPlay) throws Exception {
             AudioInputStream ais = AudioSystem.getAudioInputStream(new File(toPlay));
             Clip test = AudioSystem.getClip();  

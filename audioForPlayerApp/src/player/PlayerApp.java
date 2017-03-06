@@ -138,7 +138,6 @@ public class PlayerApp {
 					else if(line.matches("sfx [A-Za-z0-9]+.wav")){
 						String [] audioClip = line.split(" ");
 						try {
-							System.out.println(audioClip[1]); 
 							Audio.play(audioClip[1]);
 						} catch(Exception ex){
 				        	Audio.read("Error. Please get an adult. Sound file not found.");
