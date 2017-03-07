@@ -24,6 +24,7 @@ public class PlayerApp {
 	private int numCell;
 	private int buttonActivate;
 	private int buttonPressed;
+	ArrayList <String> ActionList= new ArrayList<String>();
 	
 	//Creates a Player App with specified file name.
 	public PlayerApp(String fileName){
@@ -34,7 +35,7 @@ public class PlayerApp {
 		try{
 			input = new Scanner(file);
 			while(input.hasNextLine()){
-				sb.append(input.nextLine()+" ");
+				sb.append(input.nextLine().trim()+" ");
 			}
 			line = sb.toString();
 			for (String part : line.split("<")) {
@@ -101,6 +102,7 @@ public class PlayerApp {
 					}
 					else if(line.matches("random[0-9]+")){
 						boolean pass = randomScenario(line);
+						pass = true; 
 						if (!pass){
 							counter--;
 						}
@@ -110,6 +112,7 @@ public class PlayerApp {
 						String [] audioClip = line.split(" ");
 						try {
 							Audio.play(audioClip[1]);
+							ActionList.add(audioClip[1].trim());
 						} catch(Exception ex){
 				        	Audio.read("Error. Please get an adult. Sound file not found.");
 				            ex.printStackTrace();
@@ -119,6 +122,7 @@ public class PlayerApp {
 					
 					else{
 						Audio.read(line);
+						ActionList.add(line.trim()); //twsting purposes 
 					}
 				}catch(IllegalArgumentException e){
 					Audio.read("Error. Please get an adult. " + e.getMessage());

@@ -20,7 +20,7 @@ public final class Audio {
 		
 	}
 	
-	// Reads the string toRead using freetts
+	// Reads the string toRead using free tts
 	public static void read(String toRead) {
 		final String VOICE_NAME ="kevin16";
 		VoiceManager vm = VoiceManager.getInstance();
