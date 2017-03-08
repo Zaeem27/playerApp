@@ -42,6 +42,9 @@ Thank you, kind pirates! Set sail for the evil pirates, and rescue the Mermaid P
 
 Skipper Z
 Off we go, then! The sails have been lowered <sfx dwdw.wav< and the ship’s started to skip 
-over the waves <sfx dwdw.wav< !
+over the waves <sfx dwdw.wav< 
+Whale
+ +Meeeeeeeeeeeeeeeeeeu
+
 
 

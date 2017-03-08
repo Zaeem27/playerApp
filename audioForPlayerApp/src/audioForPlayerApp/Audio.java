@@ -29,7 +29,6 @@ public final class Audio {
 		voice.allocate();
 		voice.speak(toRead);
 		voice.deallocate();
-		// for testing purposes only, not part of program
 		System.out.println(toRead.trim());
 	}
 	
@@ -47,7 +46,6 @@ public final class Audio {
                 Thread.sleep(10);
 
             test.close();
-         // for testing purposes only, not part of program
             System.out.println(toPlay);
         }
 	

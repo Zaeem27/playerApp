@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import junit.framework.Assert;
 
 import java.util.ArrayList;
 
@@ -38,7 +37,7 @@ public class PlayerAppTest {
 		expected.add("dwdw.wav");
 		expected.add("and the ship’s started to skip over the waves");
 		expected.add("dwdw.wav");
-		expected.add("!");
+		expected.add("Whale +Meeeeeeeeeeeeeeeeeeu");
 		
 		p=new PlayerApp("input.txt");
 		p.playScenario();
@@ -53,7 +52,7 @@ public class PlayerAppTest {
 			assertEquals(p.ActionList.get(i),expected.get(i));
 		}
 	}
-/*
+
 	@Test
 	public void testPlayScenario() {
 		StringBuilder sb = new StringBuilder();
@@ -128,5 +127,5 @@ public class PlayerAppTest {
 			assertEquals(p5.ActionList.get(i),expected5.get(i));
 		}
 		
-	}*/
+	}
 }
