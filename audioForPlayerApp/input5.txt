@@ -1,0 +1,7 @@
+<!5!5!<
+Testing
+Hello! We are testing repeat function.
+
+<!checkpoint!< User
+Please press 1 to repeat first then after repeat press 0 to continue and finish this test scenerio.
+<!repeat!<

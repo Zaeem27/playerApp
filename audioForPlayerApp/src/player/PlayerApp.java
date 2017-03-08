@@ -48,14 +48,17 @@ public class PlayerApp {
 				this.numButton = Integer.parseInt(cellButtonNum[2]);
 			}
 			else{
+				ActionList.add("First keyword did not specify number of cells and buttons properly.");
 				throw new IllegalArgumentException("First keyword did not specify number of cells and buttons properly.");
 			}
 		
 			if (numButton <= 1||numButton > 30){
+				ActionList.add("Button number is less than two or is greater than thirty.");
 				throw new IllegalArgumentException("Button number is less than two or is greater than thirty.");
 			}
 			
 			if (numCell <= 0||numCell > 30){
+				ActionList.add("Cell number is less than one or is greater than thirty.");
 				throw new IllegalArgumentException("Cell number is less than one or is greater than thirty.");
 			}
 			sim = new Simulator(numCell, numButton);
@@ -63,6 +66,7 @@ public class PlayerApp {
 			Audio.read("Error. Please get an adult. " + e.getMessage());
 			e.printStackTrace();
 		}catch (FileNotFoundException e) {
+			ActionList.add("Error. Please get an adult. File not found.");
 		Audio.read("Error. Please get an adult. File not found.");
 		e.printStackTrace();
 		return;
@@ -112,7 +116,7 @@ public class PlayerApp {
 						String [] audioClip = line.split(" ");
 						try {
 							Audio.play(audioClip[1]);
-							ActionList.add(audioClip[1].trim());
+							ActionList.add(audioClip[1].trim()); //testing purposes 
 						} catch(Exception ex){
 				        	Audio.read("Error. Please get an adult. Sound file not found.");
 				            ex.printStackTrace();
@@ -122,7 +126,7 @@ public class PlayerApp {
 					
 					else{
 						Audio.read(line);
-						ActionList.add(line.trim()); //twsting purposes 
+						ActionList.add(line.trim()); //testing purposes 
 					}
 				}catch(IllegalArgumentException e){
 					Audio.read("Error. Please get an adult. " + e.getMessage());

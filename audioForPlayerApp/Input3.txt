@@ -1,4 +1,4 @@
-<!5!5!<
+<!0!6!<
 Adventure on the High 
 Seas
 Narrator Z
@@ -15,7 +15,7 @@ B introduced himself?
 <!checkpoint!< First Mate B
 Not yet, Captain A!I’m First Mate B, first in command to Captain A. 
 We’re setting off on our journey now, so do you understand our names?
-
+<!repeat!<
 
 Captain A
 Alright, then we’re off!
@@ -35,7 +35,7 @@ pirate crew, and we need your help to get her back. Whaddya say?
 <!checkpoint!< First Mate B
 Well, let’s get to it. We will need to fight them using what we know now of the 
 Braille alphabet. So, how do you feel about our names up to now? There’s A, B, 
-E, K, and P. Got it? 
+E, K, and P. Got it? <!repeat!<
 
 Merman K
 Thank you, kind pirates! Set sail for the evil pirates, and rescue the Mermaid P!
@@ -44,4 +44,42 @@ Skipper Z
 Off we go, then! The sails have been lowered <sfx dwdw.wav< and the ship’s started to skip 
 over the waves <sfx dwdw.wav< !
 
+First Mate B
+But there’s something in our way! What is that?
+
+Whale
+Meeeeeeeeeu.
+
+First Mate B
+Oh no! It’s a whale! What a meanie, getting in our way! C’mon, crew, let’s talk 
+him into going!
+
+Whale
+Meeeeeeeeeeeu!
+
+<!AAz!< Incorrect try again. <!end!< MerKing E
+Of course! Help me out with this, will you,
+sailor ?
+Press button 0 if letter A is displayed, or button 1 if letter Z is 
+displayed. <!AA!az!a!<
+
+<!AAa!< <!end!<
+
+MerKing E
+Help me with another one.
+
+<!ABa!< Incorrect try again. <!end!< 
+Press button 0 if dog is displayed, or button 1 if cat is 
+displayed. <!AB!az!cat!<
+
+<!ABz!< <!end!<
+
+The last problem changes if you get it wrong. <random3<
+
+Merman K
+Good job! 
+You did it!
+
+Whale
+Meeeeeeeeeeeeeeeeeeu
 
