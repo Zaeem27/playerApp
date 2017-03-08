@@ -56,7 +56,7 @@ public class PlayerAppTest {
 	@Test
 	public void testPlayScenario() {
 		StringBuilder sb = new StringBuilder();
-		
+		//input does not specify number of cells and buttons properly
 		ArrayList <String> expected1 = new ArrayList<String>();
 		expected1.add("First keyword did not specify number of cells and buttons properly.");
 		PlayerApp p1=new PlayerApp("input1.txt");
@@ -70,7 +70,7 @@ public class PlayerAppTest {
 			assertEquals(p1.ActionList.get(i),expected1.get(i));
 			
 		}
-
+        //input 2 has button number less than 2
 		ArrayList <String> expected2 = new ArrayList<String>();
 		expected2.add("Button number is less than two or is greater than thirty.");
 		PlayerApp p2=new PlayerApp("input2.txt");
@@ -83,7 +83,7 @@ public class PlayerAppTest {
 			//System.out.println(i);
 			assertEquals(p2.ActionList.get(i),expected2.get(i));			
 		}
-		
+		//input 3 has cell number less than 1
 		ArrayList <String> expected3 = new ArrayList<String>();
 		expected3.add("Cell number is less than one or is greater than thirty.");
 		PlayerApp p3=new PlayerApp("input3.txt");
@@ -96,7 +96,7 @@ public class PlayerAppTest {
 			//System.out.println(i);
 			assertEquals(p3.ActionList.get(i),expected3.get(i));
 		}
-
+		//input 4 does not exist
 		ArrayList <String> expected4 = new ArrayList<String>();
 		expected4.add("Error. Please get an adult. File not found.");
 		PlayerApp p4=new PlayerApp("input4.txt");
@@ -109,7 +109,7 @@ public class PlayerAppTest {
 			//System.out.println(i);
 			assertEquals(p4.ActionList.get(i),expected4.get(i));
 		}
-		
+		//testing the repeat function
 		ArrayList <String> expected5 = new ArrayList<String>();
 		expected5.add("");
 		expected5.add("Testing Hello! We are testing repeat function.");
