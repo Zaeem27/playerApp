@@ -66,7 +66,7 @@ public class PlayerApp {
 			Audio.read("Error. Please get an adult. " + e.getMessage());
 			e.printStackTrace();
 		}catch (FileNotFoundException e) {
-			ActionList.add("Error. Please get an adult. File not found.");
+				ActionList.add("Error. Please get an adult. File not found.");//used for testing purposes
 		Audio.read("Error. Please get an adult. File not found.");
 		e.printStackTrace();
 		return;
@@ -187,6 +187,7 @@ public class PlayerApp {
 	private boolean randomScenario(String line) {
 		int difficulty = Integer.parseInt(line.substring(6, line.length()));
 		if (difficulty > 26){
+				ActionList.add("Random keyword has too high difficulty.");//used for testing purposes
 				throw new IllegalArgumentException("Random keyword has too high difficulty.");
 		}
 		

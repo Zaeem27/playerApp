@@ -126,6 +126,21 @@ public class PlayerAppTest {
 			//System.out.println(i);
 			assertEquals(p5.ActionList.get(i),expected5.get(i));
 		}
+		//when random keyword is higher than 26
+				ArrayList <String> expected6 = new ArrayList<String>();
+				expected6.add("");
+				expected6.add("");
+				expected6.add("Random keyword has too high difficulty.");
+				PlayerApp p6=new PlayerApp("input6.txt");
+				p6.playScenario();
+				for (int i=0;i<p6.ActionList.size();i++) {
+					System.out.println(i + " : " + p6.ActionList.get(i));
+				}
+				assertEquals(p6.ActionList.size(),expected6.size());
+				for (int i=0;i<p6.ActionList.size();i++){
+					//System.out.println(i);
+					assertEquals(p6.ActionList.get(i),expected6.get(i));
+				}
 		
 	}
 }
