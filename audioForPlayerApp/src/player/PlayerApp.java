@@ -106,7 +106,6 @@ public class PlayerApp {
 					}
 					else if(line.matches("random[0-9]+")){
 						boolean pass = randomScenario(line);
-						pass = true; 
 						if (!pass){
 							counter--;
 						}
