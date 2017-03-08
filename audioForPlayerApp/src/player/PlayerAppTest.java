@@ -33,7 +33,7 @@ public class PlayerAppTest {
 		expected.add("Hold on, what’s that sound, down in the water?");
 		expected.add("dwdw.wav");
 		expected.add("MerKing E Hello, sailors! I am the MerKing E, lord of the seven seas! This is my right hand man, Merman K. We come to you with a request.  Merman K You see, MerKing E’s daughter, the Mermaid P, has been captured by an evil pirate crew, and we need your help to get her back. Whaddya say?");
-		expected.add("First Mate B Well, let’s get to it. We will need to fight them using what we know now of the Braille alphabet. So, how do you feel about our names up to now? There’s A, B, E, K, and P. Got it?");
+		expected.add("First Mate B Well, let’s get to it. We will need to fight them using what we know now of the Braille alphabet. So, how do you feel about our names up to now? There’s A, B, E, K, and P. Got it?  Merman K Thank you, kind pirates! Set sail for the evil pirates, and rescue the Mermaid P!  Skipper Z Off we go, then! The sails have been lowered");
 		expected.add("dwdw.wav");
 		expected.add("and the ship’s started to skip over the waves");
 		expected.add("dwdw.wav");

@@ -45,6 +45,3 @@ Off we go, then! The sails have been lowered <sfx dwdw.wav< and the ship’s start
 over the waves <sfx dwdw.wav< 
 Whale
  +Meeeeeeeeeeeeeeeeeeu
-
-
-
